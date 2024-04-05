@@ -1,0 +1,67 @@
+<style>
+    #cl {
+        width: 48vw;
+        margin-left: 28vw;
+        border: 5px rgb(237, 124, 168) solid;
+        border-radius: 15px;
+        box-shadow: gray 15px 15px 150px;
+        position: absolute;
+        top: 25vh;
+        right: 25vw;
+    }
+</style>
+<div *ngIf="volunteerService.selected  " id="cl">
+    <div class="card">
+        <div class="card-header">
+            {{volunteerService.selected.name}}-{{volunteerService.selected .phone}} {{volunteerService.selected .id}}
+            days:{{volunteerService.selected .days}}
+        </div>
+        <div class="card-body">
+            <form [formGroup]="volunteerForm">
+                <div class="form-group">
+                    <!-- The name property with validation -->
+                    <label for="valName">name:</label>
+                    <input formControlName="name" id="valName" class="form-control" type="text" name="name" />
+                    <ng-container *ngIf="volunteerForm.controls['name'].errors && volunteerForm.controls['phone'].touched">
+                        <div class="alert alert-danger" *ngIf="volunteerForm.controls['name'].errors['required']">This field
+                            is
+                            required
+                        </div>
+                        <div class="alert alert-danger" *ngIf="volunteerForm.controls['name'].errors['minlength']">This field
+                            must be at least 3 chars</div>
+                        <div class="alert alert-danger" *ngIf="volunteerForm.controls['name'].errors['maxlength']">This field
+                            must be less than 20 chars</div>
+                    </ng-container>
+                </div>
+                <div class="form-group">
+                <!-- The phone property with validation -->
+                    <label for="valPhone">Phone:</label>
+                    <input formControlName="phone" class="form-control" type="text" name="phone" />
+                    <ng-container *ngIf="volunteerForm.controls['phone'].errors && volunteerForm.controls['phone'].touched">
+                        <div class="alert alert-danger" *ngIf="volunteerForm.controls['phone'].errors['required']">This field
+                            is
+                            required
+                        </div>
+                        <div class="alert alert-danger" *ngIf="volunteerForm.controls['phone'].errors['minlength']">This field
+                            must be at least 9 chars</div>
+                        <div class="alert alert-danger" *ngIf="volunteerForm.controls['phone'].errors['maxlength']">This field
+                            must be less than 20 chars</div>
+                    </ng-container>
+                </div>
+                <br>
+                <div class="form-group">
+                </div>
+                <div class="form-group">
+                    <!-- The days property with validation -->
+                    <label for="days">total Days: (char per day: 1 for can, 0 for can't)</label><br>
+                    <input formControlName="days" class="form-control" type="text" name="days" />
+                    <div>→sunday, monday and so'</div>
+                    <div class="alert alert-warnings" *ngIf="volunteerForm.controls['days'].invalid ">This
+                        field must be 7 chars</div>
+                </div>
+                <div id="cannot"></div>
+            </form>
+        </div>
+        <button class="btn btn-dark" (click)="saveNewVal()">Save Editing</button>
+    </div>
+</div>

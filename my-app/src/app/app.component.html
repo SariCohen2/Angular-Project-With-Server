@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  * {
+    box-sizing: border-box
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 237, 243);
+    min-height: 1500px;
+    /* height: 1000px; */
+  }
+
+  .navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    width: 25%;
+    /* Four links of equal widths */
+    text-align: center;
+  }
+
+  .navbar a:hover {
+    background-color: #000;
+  }
+
+  .navbar a.active {
+    background-color: #ff20cb;
+  }
+
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  #footer {
+    font-family: Goudy Stout;
+    font-size: 35px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    width: 98vw;
+    left: 0;
+    position: fixed;
+    bottom: 0;
+    animation: color 3s infinite;
+  }
+
+  @keyframes color {
+    0% {
+      background-color: black;
+    }
+
+    50% {
+      background-color: rgb(131, 126, 126);
+    }
+
+    80% {
+      background-color: black;
+    }
+  }
+</style>
+
+<body>
+  <router-outlet>
+    <div class="navbar">
+      <a class="active" href="#">Home<i class="fa fa-fw fa-home"></i></a>
+      <a routerLink="/schedule">SCHEDULE SYSTEM<i class="fa fa-car"></i></a>
+      <a routerLink="/list">VOLUNTEER LIST <i class="fa fa-heart"></i></a>
+    </div>
+  </router-outlet>
+
+</body>
+<div id="footer">
+  <i class="fa fa-quote-left fa-2x fa-pull-left" style="font-size: 30px;"></i>
+  A day without <span style="color: #ff20cb;">giving</span> is a day <span style="color: #ff20cb;">wasted.</span>
+  <i class="fa fa-quote-right fa-2x fa-pull-right " style="font-size: 30px;"></i>
+
+</div>
+
+</html>

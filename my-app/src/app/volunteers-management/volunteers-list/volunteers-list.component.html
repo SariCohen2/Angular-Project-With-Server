@@ -1,0 +1,50 @@
+<style>
+    div {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .alert {
+        font-size: 20px;
+        padding: 8px;
+        border-radius: 0;
+    }
+
+    #comp {
+        margin-bottom: 50px;
+    }
+</style>
+<p>volunteers-list works!</p>
+<div class="container mt-3">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Days</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let v of Volunteers" (click)="ediVal(v)">
+                <td>{{v.name}} </td>
+                <td>{{v.phone}}</td>
+                <td>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(0)=='1'">Sunday </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(0)!='1'">Sunday </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(1)=='1'">Monday </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(1)!='1'">Monday </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(2)=='1'">Tuesday </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(2)!='1'">Tuesday </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(3)=='1'">Wednesday </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(3)!='1'">Wednesday </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(4)=='1'">Thursday </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(4)!='1'">Thursday </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(5)=='1'">Friday </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(5)!='1'">Friday </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(6)=='1'">Saturday</span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(6)!='1'">Saturday</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

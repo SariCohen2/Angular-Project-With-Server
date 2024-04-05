@@ -1,0 +1,34 @@
+<p>transportation-system works!</p>
+<style>
+    #selected {
+        color: rgb(69, 238, 125);
+    }
+</style>
+<div class="container mt-3">
+    <h1>select volunteer for each day:</h1>
+    <form action="" [formGroup]="scheduleForm">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th *ngFor="let day of daysOfWeek">{{day}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td *ngFor="let day of daysOfWeek;index as i">
+                        <select name="day" id="day" [formControlName]="day">
+                            <option *ngFor="let v of this.byDays(i)">{{v.id}} </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th *ngFor="let i of daysOfWeek">
+                        <div id="selected">{{this.getById(scheduleForm.controls[i].value)?.name}}</div>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-dark" (click)="saveSchedule()">Save Editing</button>
+
+    </form>
+</div>
