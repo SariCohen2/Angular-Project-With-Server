@@ -4,17 +4,32 @@
         text-align: center;
     }
 
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
     .alert {
-        font-size: 20px;
-        padding: 8px;
-        border-radius: 0;
+        font-size: 17px;
+        padding: 7px;
+        border-radius: 0%;
+
+        font-family: Bahnschrift Condensed;
     }
 
     #comp {
         margin-bottom: 50px;
     }
+
+    #start {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    #end {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
 </style>
-<p>volunteers-list works!</p>
 <div class="container mt-3">
     <table class="table table-hover">
         <thead>
@@ -29,20 +44,20 @@
                 <td>{{v.name}} </td>
                 <td>{{v.phone}}</td>
                 <td>
-                    <span class="alert alert-success" *ngIf="v.days.charAt(0)=='1'">Sunday </span>
-                    <span class="alert alert-danger" *ngIf="v.days.charAt(0)!='1'">Sunday </span>
-                    <span class="alert alert-success" *ngIf="v.days.charAt(1)=='1'">Monday </span>
-                    <span class="alert alert-danger" *ngIf="v.days.charAt(1)!='1'">Monday </span>
-                    <span class="alert alert-success" *ngIf="v.days.charAt(2)=='1'">Tuesday </span>
-                    <span class="alert alert-danger" *ngIf="v.days.charAt(2)!='1'">Tuesday </span>
-                    <span class="alert alert-success" *ngIf="v.days.charAt(3)=='1'">Wednesday </span>
-                    <span class="alert alert-danger" *ngIf="v.days.charAt(3)!='1'">Wednesday </span>
-                    <span class="alert alert-success" *ngIf="v.days.charAt(4)=='1'">Thursday </span>
-                    <span class="alert alert-danger" *ngIf="v.days.charAt(4)!='1'">Thursday </span>
-                    <span class="alert alert-success" *ngIf="v.days.charAt(5)=='1'">Friday </span>
-                    <span class="alert alert-danger" *ngIf="v.days.charAt(5)!='1'">Friday </span>
-                    <span class="alert alert-success" *ngIf="v.days.charAt(6)=='1'">Saturday</span>
-                    <span class="alert alert-danger" *ngIf="v.days.charAt(6)!='1'">Saturday</span>
+                    <span id="start" class="alert alert-success" *ngIf="v.days.charAt(0)=='1'">Sun </span>
+                    <span id="start" class="alert alert-danger" *ngIf="v.days.charAt(0)!='1'">Sun </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(1)=='1'">Mon </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(1)!='1'">Mon </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(2)=='1'">Tue </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(2)!='1'">Tue </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(3)=='1'">Wed </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(3)!='1'">Wed </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(4)=='1'">Thu </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(4)!='1'">Thu </span>
+                    <span class="alert alert-success" *ngIf="v.days.charAt(5)=='1'">Fri </span>
+                    <span class="alert alert-danger" *ngIf="v.days.charAt(5)!='1'">Fri </span>
+                    <span id="end" class="alert alert-success" *ngIf="v.days.charAt(6)=='1'">Sat</span>
+                    <span id="end" class="alert alert-danger" *ngIf="v.days.charAt(6)!='1'">Sat</span>
                 </td>
             </tr>
         </tbody>

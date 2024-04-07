@@ -16,19 +16,30 @@ export class SchedulingComponent {
   schedule?: Schedule;
   scheduleForm: FormGroup = new FormGroup({});
   constructor(private volunteerService: ScheduleService, public router: Router) {
+    this.scheduleForm = new FormGroup({
+      Sunday: new FormControl(),
+      Monday: new FormControl(),
+      Tuesday: new FormControl(),
+      Wednesday: new FormControl(),
+      Thursday: new FormControl(),
+      Friday: new FormControl(),
+      Saturday: new FormControl(),
+    });
     this.volunteerService.getSchedule().subscribe(data => {
       this.schedule = data;
+      this.scheduleForm.patchValue({
+        Sunday: this.schedule?.daysByid[0],
+        Monday: this.schedule?.daysByid[1],
+        Tuesday: this.schedule?.daysByid[2],
+        Wednesday: this.schedule?.daysByid[3],
+        Thursday: this.schedule?.daysByid[4],
+        Friday: this.schedule?.daysByid[5],
+        Saturday: this.schedule?.daysByid[6],
+
+      })
     })
     //I saved for each day separately, and only when saving did I insert into the array.
-    this.scheduleForm = new FormGroup({
-      Sunday: new FormControl(this.schedule?.daysByid[0], [Validators.required]),
-      Monday: new FormControl(this.schedule?.daysByid[1], [Validators.required]),
-      Tuesday: new FormControl(this.schedule?.daysByid[2], [Validators.required]),
-      Wednesday: new FormControl(this.schedule?.daysByid[3], [Validators.required]),
-      Thursday: new FormControl(this.schedule?.daysByid[4], [Validators.required]),
-      Friday: new FormControl(this.schedule?.daysByid[5], [Validators.required]),
-      Saturday: new FormControl(this.schedule?.daysByid[6], [Validators.required]),
-    });
+
     //I received the list of volunteers for the byday function
     this.volunteerService.getVoluteers().subscribe(data => {
       this.volunteersList = data;

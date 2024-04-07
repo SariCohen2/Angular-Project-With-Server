@@ -1,19 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    p{
-        color: gray;
-    }
-</style>
-<body>
-    <p>A website for managing the volunteers </p>
-</body>
-</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,13 +16,35 @@
     font-size:70px;
     height: 100vh;
     }
+    .fa{
+        position: absolute;
+        top: 60vh;
+        left: 50vw;
+        z-index: 0;
+        color: rgb(244, 103, 166);
+        animation: float 2s alternate-reverse;
+        animation-iteration-count: infinite;
+    }
+    @keyframes float {
+        0%{
+            scale: 1;
+            opacity: 0.2;
+        }
+        100%{
+            opacity: 0.0;
+            scale: 15;
+        }
+    }
+    #container{z-index: 2;}
 </style>
-<body><br>
+<body>
+ <div id="container">
+   <br>
     <div>Welcome</div> 
     <div> 
       <span>the website for managing the volunteers</span>
-    </div>
-    <i class="fa fa-heart" aria-hidden="true"></i>
-    
+    </div></div>
+    <i class="fa fa-heart" aria-hidden="true"></i> 
 </body>
+
 </html>

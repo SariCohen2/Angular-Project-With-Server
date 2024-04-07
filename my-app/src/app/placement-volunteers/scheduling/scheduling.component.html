@@ -1,16 +1,35 @@
-<p>transportation-system works!</p>
 <style>
-    #selected {
-        color: rgb(69, 238, 125);
+    table {
+        /* margin-left: auto;
+        margin-right: auto; */
+        margin-top: 20vh;
     }
+
+    #selected {
+        color: rgb(0, 0, 0);
+    }
+
+    #noSelected {
+        color: rgb(186, 185, 184);
+    }
+
+    #day {
+        background: none repeat scroll 0 0 #f8e6f0;
+        border: 1px solid #f95388;
+        font-size: 16px;
+        border-radius: 15px;
+        padding: 5px;
+        width: 100%;
+    }
+    tr{height: 10vh;font-size: 20px;}
 </style>
 <div class="container mt-3">
-    <h1>select volunteer for each day:</h1>
+    <!-- <h1>select volunteer for each day by Id:</h1> -->
     <form action="" [formGroup]="scheduleForm">
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th *ngFor="let day of daysOfWeek">{{day}}</th>
+                    <th style="background-color: rgb(194, 194, 194);" *ngFor="let day of daysOfWeek">{{day}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,8 +41,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <th *ngFor="let i of daysOfWeek">
-                        <div id="selected">{{this.getById(scheduleForm.controls[i].value)?.name}}</div>
+                    <th *ngFor="let day of daysOfWeek">
+                        <div id="noSelected" *ngIf="!scheduleForm.controls[day].touched">
+                            {{this.getById(scheduleForm.controls[day].value)?.name}}</div>
+                        <div id="selected" *ngIf="scheduleForm.controls[day].touched">
+                            {{this.getById(scheduleForm.controls[day].value)?.name}}</div>
                     </th>
                 </tr>
             </tbody>
